@@ -1,0 +1,4664 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Agenda GEMiF",
+    "version": "0.1.0",
+    "description": "Agenda para estudiantes de GEMiF"
+  },
+  "tags": [
+    {
+      "name": "user",
+      "description": "User operations"
+    },
+    {
+      "name": "card",
+      "description": "Card operations"
+    },
+    {
+      "name": "board",
+      "description": "Board operations"
+    }
+  ],
+  "paths": {
+    "/api/user": {
+      "get": {
+        "operationId": "list-User",
+        "description": "List \"User\" resources",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email]",
+            "required": false,
+            "description": "Equality filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$contains]",
+            "required": false,
+            "description": "String contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$search]",
+            "required": false,
+            "description": "String full-text search filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password]",
+            "required": false,
+            "description": "Equality filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$contains]",
+            "required": false,
+            "description": "String contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$search]",
+            "required": false,
+            "description": "String full-text search filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[Boards]",
+            "required": false,
+            "description": "Equality filter for \"Boards\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "operationId": "create-User",
+        "description": "Create a \"User\" resource",
+        "tags": [
+          "user"
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/user/{id}": {
+      "get": {
+        "operationId": "fetch-User",
+        "description": "Fetch a \"User\" resource",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-User-put",
+        "description": "Update a \"User\" resource",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-User-patch",
+        "description": "Update a \"User\" resource",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete-User",
+        "description": "Delete a \"User\" resource",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/{id}/Boards": {
+      "get": {
+        "operationId": "fetch-User-related-Boards",
+        "description": "Fetch the related \"Boards\" resource for \"User\"",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email]",
+            "required": false,
+            "description": "Equality filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$contains]",
+            "required": false,
+            "description": "String contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$search]",
+            "required": false,
+            "description": "String full-text search filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password]",
+            "required": false,
+            "description": "Equality filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$contains]",
+            "required": false,
+            "description": "String contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$search]",
+            "required": false,
+            "description": "String full-text search filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[Boards]",
+            "required": false,
+            "description": "Equality filter for \"Boards\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoardListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/user/{id}/relationships/Boards": {
+      "get": {
+        "operationId": "fetch-User-relationship-Boards",
+        "description": "Fetch the \"Boards\" relationships for a \"User\"",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email]",
+            "required": false,
+            "description": "Equality filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$contains]",
+            "required": false,
+            "description": "String contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$search]",
+            "required": false,
+            "description": "String full-text search filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[email$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"email\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password]",
+            "required": false,
+            "description": "Equality filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$contains]",
+            "required": false,
+            "description": "String contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$search]",
+            "required": false,
+            "description": "String full-text search filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[password$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"password\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[Boards]",
+            "required": false,
+            "description": "Equality filter for \"Boards\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-User-relationship-Boards-put",
+        "description": "Update \"Boards\" relationships for a \"User\"",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "update-User-relationship-Boards-patch",
+        "description": "Update \"Boards\" relationships for a \"User\"",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create-User-relationship-Boards",
+        "description": "Create new \"Boards\" relationships for a \"User\"",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/card": {
+      "get": {
+        "operationId": "list-Card",
+        "description": "List \"Card\" resources",
+        "tags": [
+          "card"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[createdAt]",
+            "required": false,
+            "description": "Equality filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt]",
+            "required": false,
+            "description": "Equality filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[name]",
+            "required": false,
+            "description": "Equality filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$contains]",
+            "required": false,
+            "description": "String contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$search]",
+            "required": false,
+            "description": "String full-text search filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[tags]",
+            "required": false,
+            "description": "Equality filter for \"tags\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {}
+          },
+          {
+            "name": "filter[description]",
+            "required": false,
+            "description": "Equality filter for \"description\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[description$contains]",
+            "required": false,
+            "description": "String contains filter for \"description\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[description$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"description\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[description$search]",
+            "required": false,
+            "description": "String full-text search filter for \"description\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[description$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"description\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[description$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"description\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[date]",
+            "required": false,
+            "description": "Equality filter for \"date\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[date$contains]",
+            "required": false,
+            "description": "String contains filter for \"date\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[date$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"date\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[date$search]",
+            "required": false,
+            "description": "String full-text search filter for \"date\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[date$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"date\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[date$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"date\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[time]",
+            "required": false,
+            "description": "Equality filter for \"time\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[time$contains]",
+            "required": false,
+            "description": "String contains filter for \"time\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[time$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"time\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[time$search]",
+            "required": false,
+            "description": "String full-text search filter for \"time\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[time$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"time\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[time$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"time\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[board]",
+            "required": false,
+            "description": "Equality filter for \"board\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "operationId": "create-Card",
+        "description": "Create a \"Card\" resource",
+        "tags": [
+          "card"
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/card/{id}": {
+      "get": {
+        "operationId": "fetch-Card",
+        "description": "Fetch a \"Card\" resource",
+        "tags": [
+          "card"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Card-put",
+        "description": "Update a \"Card\" resource",
+        "tags": [
+          "card"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "patch": {
+        "operationId": "update-Card-patch",
+        "description": "Update a \"Card\" resource",
+        "tags": [
+          "card"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "operationId": "delete-Card",
+        "description": "Delete a \"Card\" resource",
+        "tags": [
+          "card"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/card/{id}/board": {
+      "get": {
+        "operationId": "fetch-Card-related-board",
+        "description": "Fetch the related \"board\" resource for \"Card\"",
+        "tags": [
+          "card"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoardResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/card/{id}/relationships/board": {
+      "get": {
+        "operationId": "fetch-Card-relationship-board",
+        "description": "Fetch the \"board\" relationships for a \"Card\"",
+        "tags": [
+          "card"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Card-relationship-board-put",
+        "description": "Update \"board\" relationship for a \"Card\"",
+        "tags": [
+          "card"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "patch": {
+        "operationId": "update-Card-relationship-board-patch",
+        "description": "Update \"board\" relationship for a \"Card\"",
+        "tags": [
+          "card"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/board": {
+      "get": {
+        "operationId": "list-Board",
+        "description": "List \"Board\" resources",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[createdAt]",
+            "required": false,
+            "description": "Equality filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt]",
+            "required": false,
+            "description": "Equality filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[name]",
+            "required": false,
+            "description": "Equality filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$contains]",
+            "required": false,
+            "description": "String contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$search]",
+            "required": false,
+            "description": "String full-text search filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[cards]",
+            "required": false,
+            "description": "Equality filter for \"cards\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "filter[user]",
+            "required": false,
+            "description": "Equality filter for \"user\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoardListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "operationId": "create-Board",
+        "description": "Create a \"Board\" resource",
+        "tags": [
+          "board"
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BoardCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoardResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/board/{id}": {
+      "get": {
+        "operationId": "fetch-Board",
+        "description": "Fetch a \"Board\" resource",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoardResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Board-put",
+        "description": "Update a \"Board\" resource",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BoardUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoardResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "patch": {
+        "operationId": "update-Board-patch",
+        "description": "Update a \"Board\" resource",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BoardUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoardResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request is unprocessable due to validation errors",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "operationId": "delete-Board",
+        "description": "Delete a \"Board\" resource",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/board/{id}/cards": {
+      "get": {
+        "operationId": "fetch-Board-related-cards",
+        "description": "Fetch the related \"cards\" resource for \"Board\"",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[createdAt]",
+            "required": false,
+            "description": "Equality filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt]",
+            "required": false,
+            "description": "Equality filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[name]",
+            "required": false,
+            "description": "Equality filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$contains]",
+            "required": false,
+            "description": "String contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$search]",
+            "required": false,
+            "description": "String full-text search filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[cards]",
+            "required": false,
+            "description": "Equality filter for \"cards\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "filter[user]",
+            "required": false,
+            "description": "Equality filter for \"user\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardListResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/board/{id}/relationships/cards": {
+      "get": {
+        "operationId": "fetch-Board-relationship-cards",
+        "description": "Fetch the \"cards\" relationships for a \"Board\"",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/sort"
+          },
+          {
+            "$ref": "#/components/parameters/page-offset"
+          },
+          {
+            "$ref": "#/components/parameters/page-limit"
+          },
+          {
+            "name": "filter[id]",
+            "required": false,
+            "description": "Id filter",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[createdAt]",
+            "required": false,
+            "description": "Equality filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[createdAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"createdAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt]",
+            "required": false,
+            "description": "Equality filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lt]",
+            "required": false,
+            "description": "Less-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$lte]",
+            "required": false,
+            "description": "Less-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gt]",
+            "required": false,
+            "description": "Greater-than filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[updatedAt$gte]",
+            "required": false,
+            "description": "Greater-than or equal filter for \"updatedAt\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "filter[name]",
+            "required": false,
+            "description": "Equality filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$contains]",
+            "required": false,
+            "description": "String contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$icontains]",
+            "required": false,
+            "description": "String case-insensitive contains filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$search]",
+            "required": false,
+            "description": "String full-text search filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$startsWith]",
+            "required": false,
+            "description": "String startsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[name$endsWith]",
+            "required": false,
+            "description": "String endsWith filter for \"name\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filter[cards]",
+            "required": false,
+            "description": "Equality filter for \"cards\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "filter[user]",
+            "required": false,
+            "description": "Equality filter for \"user\"",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Board-relationship-cards-put",
+        "description": "Update \"cards\" relationships for a \"Board\"",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "patch": {
+        "operationId": "update-Board-relationship-cards-patch",
+        "description": "Update \"cards\" relationships for a \"Board\"",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "operationId": "create-Board-relationship-cards",
+        "description": "Create new \"cards\" relationships for a \"Board\"",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toManyRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toManyRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/board/{id}/user": {
+      "get": {
+        "operationId": "fetch-Board-related-user",
+        "description": "Fetch the related \"user\" resource for \"Board\"",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          },
+          {
+            "$ref": "#/components/parameters/include"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/board/{id}/relationships/user": {
+      "get": {
+        "operationId": "fetch-Board-relationship-user",
+        "description": "Fetch the \"user\" relationships for a \"Board\"",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "operationId": "update-Board-relationship-user-put",
+        "description": "Update \"user\" relationship for a \"Board\"",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "patch": {
+        "operationId": "update-Board-relationship-user-patch",
+        "description": "Update \"user\" relationship for a \"Board\"",
+        "tags": [
+          "board"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/_toOneRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_toOneRelationshipResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Request is forbidden",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource is not found",
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "_jsonapi": {
+        "type": "object",
+        "description": "An object describing the server’s implementation",
+        "required": [
+          "version"
+        ],
+        "properties": {
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "_meta": {
+        "type": "object",
+        "description": "Meta information about the request or response",
+        "properties": {
+          "serialization": {
+            "description": "Superjson serialization metadata"
+          }
+        },
+        "additionalProperties": true
+      },
+      "_resourceIdentifier": {
+        "type": "object",
+        "description": "Identifier for a resource",
+        "required": [
+          "type",
+          "id"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Resource type"
+          },
+          "id": {
+            "type": "string",
+            "description": "Resource id"
+          }
+        }
+      },
+      "_resource": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_resourceIdentifier"
+          },
+          {
+            "type": "object",
+            "description": "A resource with attributes and relationships",
+            "properties": {
+              "attributes": {
+                "type": "object",
+                "description": "Resource attributes"
+              },
+              "relationships": {
+                "type": "object",
+                "description": "Resource relationships"
+              }
+            }
+          }
+        ]
+      },
+      "_links": {
+        "type": "object",
+        "required": [
+          "self"
+        ],
+        "description": "Links related to the resource",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "Link for refetching the curent results"
+          }
+        }
+      },
+      "_pagination": {
+        "type": "object",
+        "description": "Pagination information",
+        "required": [
+          "first",
+          "last",
+          "prev",
+          "next"
+        ],
+        "properties": {
+          "first": {
+            "type": "string",
+            "description": "Link to the first page",
+            "nullable": true
+          },
+          "last": {
+            "type": "string",
+            "description": "Link to the last page",
+            "nullable": true
+          },
+          "prev": {
+            "type": "string",
+            "description": "Link to the previous page",
+            "nullable": true
+          },
+          "next": {
+            "type": "string",
+            "description": "Link to the next page",
+            "nullable": true
+          }
+        }
+      },
+      "_errors": {
+        "type": "array",
+        "description": "An array of error objects",
+        "items": {
+          "type": "object",
+          "required": [
+            "status",
+            "code"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "description": "HTTP status"
+            },
+            "code": {
+              "type": "string",
+              "description": "Error code"
+            },
+            "prismaCode": {
+              "type": "string",
+              "description": "Prisma error code if the error is thrown by Prisma"
+            },
+            "title": {
+              "type": "string",
+              "description": "Error title"
+            },
+            "detail": {
+              "type": "string",
+              "description": "Error detail"
+            },
+            "reason": {
+              "type": "string",
+              "description": "Detailed error reason"
+            },
+            "zodErrors": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "Zod validation errors if the error is due to data validation failure"
+            }
+          }
+        }
+      },
+      "_errorResponse": {
+        "type": "object",
+        "required": [
+          "errors"
+        ],
+        "description": "An error response",
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/_errors"
+          }
+        }
+      },
+      "_relationLinks": {
+        "type": "object",
+        "required": [
+          "self",
+          "related"
+        ],
+        "description": "Links related to a relationship",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "Link for fetching this relationship"
+          },
+          "related": {
+            "type": "string",
+            "description": "Link for fetching the resource represented by this relationship"
+          }
+        }
+      },
+      "_toOneRelationship": {
+        "type": "object",
+        "description": "A to-one relationship",
+        "properties": {
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_resourceIdentifier"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "_toOneRelationshipWithLinks": {
+        "type": "object",
+        "required": [
+          "links",
+          "data"
+        ],
+        "description": "A to-one relationship with links",
+        "properties": {
+          "links": {
+            "$ref": "#/components/schemas/_relationLinks"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_resourceIdentifier"
+              }
+            ],
+            "nullable": true
+          }
+        }
+      },
+      "_toManyRelationship": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "description": "A to-many relationship",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resourceIdentifier"
+            }
+          }
+        }
+      },
+      "_toManyRelationshipWithLinks": {
+        "type": "object",
+        "required": [
+          "links",
+          "data"
+        ],
+        "description": "A to-many relationship with links",
+        "properties": {
+          "links": {
+            "$ref": "#/components/schemas/_pagedRelationLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resourceIdentifier"
+            }
+          }
+        }
+      },
+      "_pagedRelationLinks": {
+        "description": "Relationship links with pagination information",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_pagination"
+          },
+          {
+            "$ref": "#/components/schemas/_relationLinks"
+          }
+        ]
+      },
+      "_toManyRelationshipRequest": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "description": "Input for manipulating a to-many relationship",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resourceIdentifier"
+            }
+          }
+        }
+      },
+      "_toOneRelationshipRequest": {
+        "description": "Input for manipulating a to-one relationship",
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/_resourceIdentifier"
+          }
+        },
+        "nullable": true
+      },
+      "_toManyRelationshipResponse": {
+        "description": "Response for a to-many relationship",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_toManyRelationshipWithLinks"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "jsonapi": {
+                "$ref": "#/components/schemas/_jsonapi"
+              }
+            }
+          }
+        ]
+      },
+      "_toOneRelationshipResponse": {
+        "description": "Response for a to-one relationship",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_toOneRelationshipWithLinks"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "jsonapi": {
+                "$ref": "#/components/schemas/_jsonapi"
+              }
+            }
+          }
+        ]
+      },
+      "User": {
+        "type": "object",
+        "description": "The \"User\" model",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              }
+            }
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "Boards": {
+                "$ref": "#/components/schemas/_toManyRelationshipWithLinks"
+              }
+            }
+          }
+        }
+      },
+      "UserCreateRequest": {
+        "type": "object",
+        "description": "Input for creating a \"User\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"User\" model",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "Boards": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "UserUpdateRequest": {
+        "type": "object",
+        "description": "Input for updating a \"User\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"User\" model",
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "Boards": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "UserResponse": {
+        "type": "object",
+        "description": "Response for a \"User\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relationships": {
+                    "type": "object",
+                    "properties": {
+                      "Boards": {
+                        "$ref": "#/components/schemas/_toManyRelationship"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/_links"
+          }
+        }
+      },
+      "UserListResponse": {
+        "type": "object",
+        "description": "Response for a list of \"User\"",
+        "required": [
+          "data",
+          "links"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/User"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "Boards": {
+                          "$ref": "#/components/schemas/_toManyRelationship"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_links"
+              },
+              {
+                "$ref": "#/components/schemas/_pagination"
+              }
+            ]
+          }
+        }
+      },
+      "Card": {
+        "type": "object",
+        "description": "The \"Card\" model",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "name": {
+                "type": "string"
+              },
+              "tags": {},
+              "description": {
+                "type": "string"
+              },
+              "date": {
+                "type": "string"
+              },
+              "time": {
+                "type": "string"
+              },
+              "boardId": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "board": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_toOneRelationshipWithLinks"
+                  }
+                ],
+                "nullable": true
+              }
+            }
+          }
+        }
+      },
+      "CardCreateRequest": {
+        "type": "object",
+        "description": "Input for creating a \"Card\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Card\" model",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "required": [
+                  "updatedAt",
+                  "name",
+                  "tags",
+                  "description",
+                  "date",
+                  "time"
+                ],
+                "properties": {
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "tags": {},
+                  "description": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string"
+                  },
+                  "time": {
+                    "type": "string"
+                  },
+                  "boardId": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "board": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_toOneRelationship"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "CardUpdateRequest": {
+        "type": "object",
+        "description": "Input for updating a \"Card\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Card\" model",
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "tags": {},
+                  "description": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string"
+                  },
+                  "time": {
+                    "type": "string"
+                  },
+                  "boardId": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "board": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_toOneRelationship"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "CardResponse": {
+        "type": "object",
+        "description": "Response for a \"Card\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Card"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relationships": {
+                    "type": "object",
+                    "properties": {
+                      "board": {
+                        "$ref": "#/components/schemas/_toOneRelationship"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/_links"
+          }
+        }
+      },
+      "CardListResponse": {
+        "type": "object",
+        "description": "Response for a list of \"Card\"",
+        "required": [
+          "data",
+          "links"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Card"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "board": {
+                          "$ref": "#/components/schemas/_toOneRelationship"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_links"
+              },
+              {
+                "$ref": "#/components/schemas/_pagination"
+              }
+            ]
+          }
+        }
+      },
+      "Board": {
+        "type": "object",
+        "description": "The \"Board\" model",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "name": {
+                "type": "string"
+              },
+              "userId": {
+                "type": "string"
+              }
+            }
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {
+              "cards": {
+                "$ref": "#/components/schemas/_toManyRelationshipWithLinks"
+              },
+              "user": {
+                "$ref": "#/components/schemas/_toOneRelationshipWithLinks"
+              }
+            }
+          }
+        }
+      },
+      "BoardCreateRequest": {
+        "type": "object",
+        "description": "Input for creating a \"Board\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Board\" model",
+            "required": [
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "required": [
+                  "updatedAt",
+                  "name",
+                  "userId"
+                ],
+                "properties": {
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "cards": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  },
+                  "user": {
+                    "$ref": "#/components/schemas/_toOneRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "BoardUpdateRequest": {
+        "type": "object",
+        "description": "Input for updating a \"Board\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "description": "The \"Board\" model",
+            "required": [
+              "id",
+              "type",
+              "attributes"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {
+                  "cards": {
+                    "$ref": "#/components/schemas/_toManyRelationship"
+                  },
+                  "user": {
+                    "$ref": "#/components/schemas/_toOneRelationship"
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          }
+        }
+      },
+      "BoardResponse": {
+        "type": "object",
+        "description": "Response for a \"Board\"",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Board"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relationships": {
+                    "type": "object",
+                    "properties": {
+                      "cards": {
+                        "$ref": "#/components/schemas/_toManyRelationship"
+                      },
+                      "user": {
+                        "$ref": "#/components/schemas/_toOneRelationship"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/_links"
+          }
+        }
+      },
+      "BoardListResponse": {
+        "type": "object",
+        "description": "Response for a list of \"Board\"",
+        "required": [
+          "data",
+          "links"
+        ],
+        "properties": {
+          "jsonapi": {
+            "$ref": "#/components/schemas/_jsonapi"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/Board"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "relationships": {
+                      "type": "object",
+                      "properties": {
+                        "cards": {
+                          "$ref": "#/components/schemas/_toManyRelationship"
+                        },
+                        "user": {
+                          "$ref": "#/components/schemas/_toOneRelationship"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/_meta"
+          },
+          "included": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_resource"
+            }
+          },
+          "links": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_links"
+              },
+              {
+                "$ref": "#/components/schemas/_pagination"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "parameters": {
+      "id": {
+        "name": "id",
+        "in": "path",
+        "description": "The resource id",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "include": {
+        "name": "include",
+        "in": "query",
+        "description": "Relationships to include",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "sort": {
+        "name": "sort",
+        "in": "query",
+        "description": "Fields to sort by",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "page-offset": {
+        "name": "page[offset]",
+        "in": "query",
+        "description": "Offset for pagination",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "page-limit": {
+        "name": "page[limit]",
+        "in": "query",
+        "description": "Limit for pagination",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "securitySchemes": {
+      "myBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "myBearer": []
+    }
+  ]
+}
