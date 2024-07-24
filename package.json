@@ -13,6 +13,7 @@
   "dependencies": {
     "@prisma/client": "^5.17.0",
     "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
     "@zenstackhq/runtime": "^2.3.3",
     "@zenstackhq/server": "^2.3.3",
     "bcryptjs": "^2.4.3",
