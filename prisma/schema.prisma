@@ -24,7 +24,7 @@ model User {
   Boards   Board[]
 }
 
-/// @@allow('all', true)
+/// @@allow('all', board.user == auth())
 model Card {
   id          String   @id() @default(cuid())
   createdAt   DateTime @default(now())
@@ -38,7 +38,7 @@ model Card {
   boardId     String?
 }
 
-/// @@allow('all', true)
+/// @@allow('all', user == auth())
 model Board {
   id        String   @id() @default(cuid())
   createdAt DateTime @default(now())

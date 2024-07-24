@@ -10,9 +10,11 @@ import { Request } from 'express';
 import swaggerUI from 'swagger-ui-express';
 import fs from 'fs';
 import path from 'path';
+import cors from 'cors';
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const prisma = new PrismaClient();
 

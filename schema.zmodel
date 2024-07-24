@@ -48,7 +48,7 @@ model Card {
     boardId String?
 
     // card is privately readable
-    @@allow('all', true)
+    @@allow('all', board.user == auth())
 
 }
 
@@ -61,5 +61,5 @@ model Board {
     user User @relation(fields: [userId], references: [id])
     userId String
 
-    @@allow('all', true)
+    @@allow('all', user == auth())
 }

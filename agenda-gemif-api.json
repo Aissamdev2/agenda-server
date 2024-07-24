@@ -697,8 +697,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/api/user/{id}/relationships/Boards": {
@@ -1530,8 +1529,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "operationId": "create-Card",
@@ -1579,8 +1577,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/api/card/{id}": {
@@ -1629,8 +1626,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "put": {
         "operationId": "update-Card-put",
@@ -1693,8 +1689,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "patch": {
         "operationId": "update-Card-patch",
@@ -1757,8 +1752,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "operationId": "delete-Card",
@@ -1795,8 +1789,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/api/card/{id}/board": {
@@ -1845,8 +1838,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/api/card/{id}/relationships/board": {
@@ -1892,8 +1884,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "put": {
         "operationId": "update-Card-relationship-board-put",
@@ -1946,8 +1937,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "patch": {
         "operationId": "update-Card-relationship-board-patch",
@@ -2000,8 +1990,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/api/board": {
@@ -2268,8 +2257,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "operationId": "create-Board",
@@ -2317,8 +2305,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/api/board/{id}": {
@@ -2367,8 +2354,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "put": {
         "operationId": "update-Board-put",
@@ -2431,8 +2417,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "patch": {
         "operationId": "update-Board-patch",
@@ -2495,8 +2480,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "operationId": "delete-Board",
@@ -2533,8 +2517,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/api/board/{id}/cards": {
@@ -2814,8 +2797,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/api/board/{id}/relationships/cards": {
@@ -3092,8 +3074,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "put": {
         "operationId": "update-Board-relationship-cards-put",
@@ -3146,8 +3127,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "patch": {
         "operationId": "update-Board-relationship-cards-patch",
@@ -3200,8 +3180,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "operationId": "create-Board-relationship-cards",
@@ -3254,8 +3233,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/api/board/{id}/user": {
@@ -3351,8 +3329,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "put": {
         "operationId": "update-Board-relationship-user-put",
@@ -3405,8 +3382,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "patch": {
         "operationId": "update-Board-relationship-user-patch",
@@ -3459,8 +3435,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     }
   },
