@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "server": "npx tsx watch api/app.ts",
-    "vercel-build": "zenstack generate && tsc && prisma db push && tsx prisma/seed.ts"
+    "vercel-build": "zenstack generate && tsc --external:swagger-ui-express && prisma db push && tsx prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
